@@ -12,8 +12,9 @@ type ufGroup1 struct {
 }
 
 // NewUnionFind1 :
-func NewUnionFind1() UnionFind1 {
-	return make(map[int]*ufGroup1)
+func NewUnionFind1() *UnionFind1 {
+	res := make(UnionFind1)
+	return &res
 }
 
 // Union :
@@ -58,7 +59,7 @@ func (u *UnionFind1) IsInSameGroup(a, b int) bool {
 	return aLabel == bLabel
 }
 
-// Find :
+// Find : Return the label in the group
 func (u *UnionFind1) Find(l int) (int, error) {
 	if u == nil {
 		return 0, errors.New("Receiver is nil")
